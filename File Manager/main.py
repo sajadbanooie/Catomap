@@ -22,5 +22,23 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 
 from kivy.uix.screenmanager import Screen, ScreenManager, NoTransition, WipeTransition, SlideTransition, SwapTransition
-
+from kivy.lang import Builder
 from kivy.graphics import Color, Ellipse, Line, Rectangle, Point
+Builder.load_file('Main')
+
+
+class MainScreen(Screen):
+    def __init__(self, **kwargs):
+        super(MainScreen, self).__init__(**kwargs)
+
+sm = ScreenManager()
+sm.add_widget(MainScreen(name='main'))
+sm.current = 'main'
+
+
+class MainApp(App):
+    def build(self):
+        return sm
+
+if __name__ == '__main__':
+    MainApp().run()
