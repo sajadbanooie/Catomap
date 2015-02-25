@@ -1,21 +1,11 @@
 <MainScreen>:
-    GridLayout:
-        row:4
-        cols:5
     BoxLayout:
-        size_hint_y:.1
-        Label:
-            text:"Path:"
-            pos_hint_x: None
-            pos_hint_y: None
-            pos: (0,0)
-        BoxLayout:
-            orientation:'vertical'
-            Label:
-                text:"Size:"
-            Label:
-                text:"Type:"
-
+        orientation:'vertical'
+        ScrollView:
+            GridLayout:
+                id:Grid
+                row:4
+                cols:5
 
 
     ActionBar:
@@ -25,6 +15,19 @@
             ActionPrevious:
                 title:'File Manager'
                 with_previous: False
+            ActionOverflow:
+            ActionButton:
+                text: 'Settings'
+    ActionBar:
+
+        pos_hint: {'bottom':1}
+        ActionView:
+            use_separator: True
+            ActionPrevious:
+                id:Action
+                title:'Selected Files: '
+                with_previous: False
+                with_icon: False
             ActionOverflow:
             ActionButton:
                 text: 'Settings'
