@@ -1,12 +1,14 @@
+#:import Window kivy.core.window.Window
 <MainScreen>:
     BoxLayout:
         orientation:'vertical'
         ScrollView:
             GridLayout:
+                size_hint:(None,None)
                 id:Grid
-                row:4
-                cols:5
-
+                cols:Window.width//100-1
+                padding:[10, 120, 0, 100]
+                spacing:30
 
     ActionBar:
         pos_hint: {'top':1}
@@ -17,7 +19,7 @@
                 with_previous: False
             ActionOverflow:
             ActionButton:
-                text: 'Settings'
+                text: 'History'
     ActionBar:
 
         pos_hint: {'bottom':1}
@@ -26,8 +28,14 @@
             ActionPrevious:
                 id:Action
                 title:'Selected Files: '
-                with_previous: False
-                with_icon: False
+                on_press:root.back()
             ActionOverflow:
             ActionButton:
-                text: 'Settings'
+                text: 'Coppy'
+                on_press: root.copy()
+                id:Copy
+            ActionButton:
+                text: 'Download'
+                on_press: root.download()
+            ActionButton:
+                text: 'Details'
